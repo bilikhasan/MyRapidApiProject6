@@ -1,0 +1,104 @@
+﻿@* @{
+    Layout = null; // Varsa bir layout kullanın
+    var hotels = Model as IEnumerable<dynamic>; // JSON dinamik model
+}
+
+<h2>Otel Listesi</h2>
+
+@if (hotels != null && hotels.Any())
+{
+    <ul>
+        @foreach (var hotel in hotels)
+        {
+            <li>
+                <strong>@hotel.name</strong><br />
+                Değerlendirme: @hotel.review_score_word<br />
+                Fiyat: @hotel.price_breakdown?.gross_price ?? "Belirtilmedi"<br />
+                <img src="@hotel.photo_urls[0]" alt="@hotel.name" style="width:200px;height:150px;" />
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>Hiçbir otel bulunamadı.</p>
+}
+ *@
+
+
+
+
+
+
+
+
+
+
+
+
+@* 
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Varsa bir layout dosyası
+    var hotels = Model as IEnumerable<dynamic>; // JSON modelini dinamik olarak cast ediyoruz
+}
+
+<h2>Otel Listesi</h2>
+
+@if (hotels != null && hotels.Any())
+{
+    <ul>
+        @foreach (var hotel in hotels)
+        {
+            <li>
+                <strong>@hotel.name</strong><br />
+                Değerlendirme: @hotel.review_score_word<br />
+                Fiyat: @hotel.price_breakdown?.gross_price ?? "Belirtilmedi"<br />
+                <img src="@hotel.photo_urls[0]" alt="@hotel.name" style="width:200px;height:150px;" />
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>Hiçbir otel bulunamadı. Lütfen arama kriterlerinizi değiştirin.</p>
+}
+ *@
+
+
+
+
+
+
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var hotels = Model as IEnumerable<dynamic>; // Gelen JSON array formatında olduğu için JArray kullanıyoruz
+}
+
+<h2>Otel Listesi</h2>
+
+@if (hotels != null && hotels.Any())
+{
+    <ul>
+        @foreach (var hotel in hotels)
+        {
+            <li>
+                <strong>@hotel["name"]</strong><br />
+                Değerlendirme: @hotel["review_score_word"]<br />
+                Fiyat: @(hotel["price_breakdown"]?["gross_price"] ?? "Belirtilmedi")<br />
+                <img src="@hotel["photo_urls"]?[0]" alt="@hotel["name"]" style="width:200px;height:150px;" />
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>Hiçbir otel bulunamadı. Lütfen arama kriterlerinizi değiştirin.</p>
+}
+
+
+
+
+
+

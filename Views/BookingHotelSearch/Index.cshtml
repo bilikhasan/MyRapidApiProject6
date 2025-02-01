@@ -1,0 +1,80 @@
+﻿@* @model List<MyRapidApiProject6.Models.BookingHotelSearchViewModel.Hotel> *@
+
+
+@{
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+
+
+}
+
+
+
+
+@* 
+<h1>Booking Hotel Reservasyon Sayfası</h1>
+
+<h3>Arama YApılan Şehir: Paris/Fransa</h3>
+
+<div class="container">
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>Otel Adı</th>
+            <th>Otel Değerlendirmesi</th>
+            <th>Detaylar</th>
+            <th>GÖRSEL</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>count</td>
+                <td>@item.property.name</td>
+                <td>@item.property.reviewScore</td>
+
+                <td><a href="#" class="btn btn-outline-dark">Detaylar</a></td>
+
+                <td><img src="@item.property.photoUrls[2]" style="width:100px; height:100px;" /> </td>
+            </tr>
+        }
+    </table>
+</div>
+ *@
+
+
+
+
+
+
+
+
+
+
+<div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
+    <div class="booking-form">
+        <h3>Otelleri KEŞFET</h3>
+        <form method="post" class="reservation-form">
+            <div class="form-group">
+                <label for="city">Şehir:</label>
+                <input type="text" class="form-control" name="p" id="city" placeholder="Örn:Paris, Amsterdam, New York" required>
+            </div>
+            <div class="form-group">
+                <label for="date-in">Giriş Tarihi:</label>
+                <input type="date" class="form-control" name="dateIn" id="date-in" required placeholder="Giriş yapacağınız tarihi seçin">
+            </div>
+            <div class="form-group">
+                <label for="date-out">Çıkış Tarihi:</label>
+                <input type="date" class="form-control" name="dateOut" id="date-out" required placeholder="Çıkış yapacağınız tarihi seçin">
+            </div>
+            <div class="form-group">
+                <label for="guest">Yetişkin Sayısı:</label>
+                <input type="number" class="form-control" name="guest" id="guest" min="1" required placeholder="Örn: 2">
+            </div>
+            <div class="form-group">
+                <label for="children">Çocuk Sayısı:</label>
+                <input type="number" class="form-control" name="children" id="children" min="0" required placeholder="Örn: 1">
+            </div>
+            <button type="submit" class="btn btn-primary">En İyİ Otelleri Ara</button>
+        </form>
+    </div>
+</div>

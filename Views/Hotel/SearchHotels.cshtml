@@ -1,0 +1,25 @@
+﻿@{
+    var hotels = Model; // Controller'dan gelen veri
+}
+
+<h2>Hotels List</h2>
+<form method="post" action="/Hotel/SearchHotels">
+    <input type="text" name="city" placeholder="City" />
+    <input type="number" name="guests" placeholder="Guests" />
+    <input type="date" name="checkInDate" />
+    <input type="date" name="checkOutDate" />
+    <button type="submit">Search</button>
+</form>
+
+@if (hotels != null && hotels.HasValues)
+{
+    foreach (var hotel in hotels)
+    {
+        <div class="hotel">
+            <img src="@hotel["photoUrls"][0]" alt="Hotel Image" />
+            <h3>@hotel["wishlistName"]</h3>
+            <p>@hotel["accessibilityLabel"]</p>
+            <p>Price: @hotel["priceBreakdown"]["grossPrice"]["value"] USD</p>
+        </div>
+    }
+}
